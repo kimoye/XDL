@@ -1,0 +1,45 @@
+import numpy as np
+a=[1,2,3,4]
+x=np.array(a)#要生成numpy数组，需要使用np.array()方法
+#np.array()接收python列表作为参数，生成numpy数组(numpy.ndarray)
+print(x)
+y=np.array([5,6,7,8])
+sumn=x+y#两个列表保持元素的一致，对应的元素，称为element-wise
+print(sumn)
+#numpy数组不仅可以进行element-wise计算，还可以和单一数值进行,这个功能称为广播
+single_wise=y/2
+print("single_wise=",single_wise)
+#numpy还可以生成多维数组
+A=np.array([[1,2],[3,4]])
+print(A[0])#第0行(索引)
+print(A[0][1])#(0,1)的元素
+#也可以使用for语句访问每个元素
+for row in A:
+    print(row)
+print("the shape of matrix is",A.shape)#shape查看矩阵形状2x2矩阵
+B=A/2
+#多维矩阵同样具有广播功能
+print(B)
+'''
+numpy中的广播
+numpy将低维数组扩展成高维数组以进行运算
+所以不同形状的数组之间也可以顺利进行运算'''
+C=np.array([1,2])
+D=A*C#为进行计算，C将变成[[1,2],[1,2]]
+print(D)
+
+#numpy还可以使用数组访问每个元素
+A=A.flatten()#将A转化为一维数组
+print(A)
+print("获取索引为0、2的元素",A[np.array([0,2])])
+print(A>2)#[False False  True  True],再Numpy数组中使用不等号运算符等会得到布尔型数组
+print(A[A>2])#[3 4],不需要转化为一维数组
+'''
+>>> A=np.array([[1,2,2],[3,4,5],[6,7,8]])
+>>> print(A[A>2])
+[3 4 5 6 7 8]
+>>> print(A[A[0,2]])
+[6 7 8]
+'''
+#如果是计算量大的处理对象，C/C++显然是比python更好的选择，python可以承担中间人的角色
+#负责调用那些C/C++写的程序
