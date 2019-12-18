@@ -1,0 +1,36 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+'''#生成数据
+x=np.arange(0,6,0.1)#以0.1为单位，生成0到6的数据
+#arange(起始值，结束值, 步长)根据起始值与结束值指定的范围以及s设定的步长，
+#生成一个 ndarray。但不包含结束值。
+y=np.sin(x)
+y1=np.cos(x)
+#numpy模块中含有数学函数
+#绘制图形
+plt.plot(x,y,label="sin",linestyle="--")#用虚线绘制
+plt.plot(x,y1,label="cos")
+plt.xlabel("x")#x轴标签
+plt.ylabel("y")#y轴标签
+plt.title("sin&cos")#标题
+plt.legend()#显示图例
+plt.show()'''
+#pyplot还提供了用于显示图像方法的imshow()
+#可以使用matplotlib.image模块的imread()方法读入图像
+
+import matplotlib.image as mpimg
+img=mpimg.imread('G:/photo/wallpaper/QQ.png')#imread()仅能处理.png格式
+#ValueError: Only know how to handle extensions: ['png'];
+#with Pillow installed matplotlib can handle more images
+plt.imshow(img)
+plt.show()
+
+#PermissionError: [Errno 13] Permission denied: 'G:/photo/wallpaper/'
+#出现一系列错误的原因是自己直接改了图片的后缀，但图片真正的格式并没有变成.png
+#为处理.jpg格式图片，导入PIL模块;
+
+from PIL import Image
+img1=Image.open("G:/photo/wallpaper/TS.jpg")
+plt.imshow(img1)
+plt.show()#将图片显示在面板上
